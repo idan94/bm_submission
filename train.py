@@ -278,15 +278,15 @@ def visualize(args, epoch, model, data_loader, writer):
                 # PSNR:
                 psnr_loss += calc_psnr(mse_loss)
                 # SSIM:
-                loss = SSIM()
-                ssim_loss += loss(target, output)
+                # loss = SSIM()
+                # ssim_loss += loss(target, output)
                 number_of_images += 1
             break
         if number_of_images > 0:
             writer.add_scalar('Loss/L1', l1_loss / number_of_images, epoch)
             writer.add_scalar('Loss/MSE', mse_loss / number_of_images, epoch)
             writer.add_scalar('Loss/PSNR', psnr_loss / number_of_images, epoch)
-            writer.add_scalar('Loss/SSIM', ssim_loss / number_of_images, epoch)
+            # writer.add_scalar('Loss/SSIM', ssim_loss / number_of_images, epoch)
 
 
 def calc_psnr(mse):
