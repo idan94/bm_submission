@@ -7,7 +7,7 @@ import torchvision
 from tensorboardX import SummaryWriter
 from torch.utils.data import DataLoader
 from math import log10, sqrt
-from SSIM import ssim
+from SSIM import SSIM
 from common.args import Args
 from data.mri_data import SliceData
 from dataTransform import DataTransform
@@ -278,7 +278,8 @@ def visualize(args, epoch, model, data_loader, writer):
                 # PSNR:
                 psnr_loss += calc_psnr(mse_loss)
                 # SSIM:
-                ssim_loss += ssim(target, output)
+                loss = SSIM()
+                ssim_loss += loss(target, output)
                 number_of_images += 1
             break
         if number_of_images > 0:
